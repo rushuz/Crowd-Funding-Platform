@@ -1,75 +1,80 @@
 const db = require("../models");
 
-// The below code is only for development stage
-// To add some default items in our DB (Campaign collection) and check the API
-const item1 = new db.Campaign({
-  title: "test1",
-  subTitle: "subTitle1",
-  description: "test1 description here...",
-  imageUrl: "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
-  required: 500,
-  start: "2020-12-22T11:18:54.919Z",
-});
+// ===== Development-only seed data =====
+const defaultItems = [
+  {
+    title: "test1",
+    subTitle: "subTitle1",
+    description: "test1 description here...",
+    imageUrl:
+      "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
+    required: 500,
+    start: "2020-12-22T11:18:54.919Z",
+  },
+  {
+    title: "test2",
+    subTitle: "subTitle2",
+    description: "test2 description here...",
+    imageUrl:
+      "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
+    required: 100,
+    start: "2020-12-20T11:18:54.919Z",
+  },
+  {
+    title: "test3",
+    subTitle: "subTitle3",
+    description: "test3 description here...",
+    imageUrl:
+      "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
+    required: 5000,
+    start: "2020-12-19T11:18:54.919Z",
+  },
+  {
+    title: "test4",
+    subTitle: "subTitle4",
+    description: "test4 description here...",
+    imageUrl:
+      "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
+    required: 50000,
+    start: "2020-12-22T11:19:54.919Z",
+  },
+];
 
-const item2 = new db.Campaign({
-  title: "test2",
-  subTitle: "subTitle2",
-  description: "test2 description here...",
-  imageUrl: "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
-  required: 100,
-  start: "2020-12-20T11:18:54.919Z",
-});
-
-const item3 = new db.Campaign({
-  title: "test3",
-  subTitle: "subTitle3",
-  description: "test3 description here...",
-  imageUrl: "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
-  required: 5000,
-  start: "2020-12-19T11:18:54.919Z",
-});
-
-const item4 = new db.Campaign({
-  title: "test4",
-  subTitle: "subTitle4",
-  description: "test4 description here...",
-  imageUrl: "https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg",
-  required: 50000,
-  start: "2020-12-22T11:19:54.919Z",
-});
-
-const defaultItems = [item1, item2, item3, item4];
-
-// Only run this during development to insert default items
-db.Campaign.find().exec((err, results) => {
-  if (results.length === 0) {
-    db.Campaign.insertMany(defaultItems, (err) => {
-      if (err) {
-        console.error("Error inserting default items:", err);
-      } else {
-        console.log("Successfully added default items to Campaign collection in DB");
-      }
-    });
-  }
-});
-
-// Hide transaction ID function
-function hideTransactionID(donors) {
-  if (!donors || donors.length === 0) return;
-  
-  for (let i = 0; i < donors.length; i++) {
-    let S = donors[i].transactionID;
-    let hiddenID = S.slice(0, 4) + "XXXX" + S.slice(-3);
-    donors[i].transactionID = hiddenID;
+// ===== Seed function (run once on startup) =====
+async function seedCampaigns() {
+  try {
+    const count = await db.Campaign.countDocuments();
+    if (count === 0) {
+      await db.Campaign.insertMany(defaultItems);
+      console.log("✅ Default campaigns inserted");
+    }
+  } catch (err) {
+    console.error("❌ Error inserting default campaigns:", err);
   }
 }
+
+seedCampaigns();
+
+// ===== Utility =====
+function hideTransactionID(donors) {
+  if (!donors || donors.length === 0) return;
+
+  donors.forEach((donor) => {
+    if (!donor.transactionID) return;
+    donor.transactionID =
+      donor.transactionID.slice(0, 4) + "XXXX" + donor.transactionID.slice(-3);
+  });
+}
+
+// ===== Controllers =====
 
 // Show a campaign by ID
 const show = async (req, res) => {
   try {
     const { id } = req.params;
+
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-      return res.status(404).json({ message: "Invalid Campaign ID format" });
+      return res.status(400).json({ message: "Invalid Campaign ID format" });
     }
 
     const campaign = await db.Campaign.findById(id);
@@ -88,15 +93,15 @@ const show = async (req, res) => {
 // Show all campaigns
 const showAll = async (req, res) => {
   try {
-    const campaigns = await db.Campaign.find({}).sort({ start: -1 });
-    
+    const campaigns = await db.Campaign.find().sort({ start: -1 });
+
     campaigns.forEach((campaign) => {
       hideTransactionID(campaign.donors);
     });
 
     return res.status(200).json(campaigns);
   } catch (error) {
-    console.error("Error fetching all campaigns:", error);
+    console.error("Error fetching campaigns:", error);
     return res.status(500).json({ message: "Error fetching campaigns" });
   }
 };

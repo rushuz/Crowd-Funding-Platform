@@ -1,15 +1,12 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
+
 const dbUrl = process.env.MONGODB_URI;
 
 mongoose
-  .connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log("MongoDB connected..."))
-  .catch((err) => console.log(`MongoDB connection error : ${err}`));
+  .connect(dbUrl)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 module.exports = {
   Campaign: require("./Campaign"),

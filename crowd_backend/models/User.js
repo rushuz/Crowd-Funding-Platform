@@ -17,7 +17,7 @@ const UserSchema = mongoose.Schema({
     default: false,
   },*/
   resetLink: {
-    data: String,
+    type: String,
     default: "",
   },
 });
