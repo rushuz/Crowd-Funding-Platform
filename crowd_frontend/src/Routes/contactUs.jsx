@@ -21,10 +21,10 @@ const AboutUs = () => {
           <div className={styles.map}>
             <iframe
               title="Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.376170291284!2d78.17195011486825!3d26.249452083417705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976c6e5d32a4d53%3A0xf834069adc0c9b89!2sIndian%20Institute%20of%20Information%20Technology%20and%20Management%20Gwalior!5e0!3m2!1sen!2sin!4v1608394606599!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1936799.950455043!2d72.76163773125002!3d18.5373777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c1ea090faea3%3A0xa02b86e39fed1228!2sWings%20For%20Dreams%20%7C%20Pune%20%7C%20Best%20Ngo%20NGO%20in%20Pune%20%7C!5e0!3m2!1sen!2sin!4v1767260573819!5m2!1sen!2sin" 
               width="600"
               height="380"
-              frameBorder="0"
+              frameBorder="1"
               aria-hidden="false"
             ></iframe>
           </div>

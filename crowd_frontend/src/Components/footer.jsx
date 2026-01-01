@@ -9,11 +9,11 @@ const Footer = () => {
       <div className="row">
         <div className={`col-12 col-sm-6 col-md-4 ${styles.left}`}>
           <a href="/">
-            <img className={`${styles.logo}`} src={logo} alt="ROTARACT LOGO" />
+            {/* <img className={`${styles.logo}`} src={logo} alt="ROTARACT LOGO" /> */}
           </a>
           <br />
           <p className={`${styles.caption}`}>
-            Rotaract Club <br /> IIITM Gwalior
+            Rushact Club <br /> WFD
           </p>
         </div>
         <div className={`col-12 col-sm-6 col-md-4 ${styles.middle}`}>
@@ -22,7 +22,7 @@ const Footer = () => {
           </p>
           <a
             className={`${styles.facebook}`}
-            href="https://www.facebook.com/rotaractiiitm/"
+            href="https://www.facebook.com/profile.php?id=100080711896093"
             target="_blank"
             rel="noreferrer"
           >
@@ -30,7 +30,7 @@ const Footer = () => {
           </a>
           <a
             className={`${styles.linkedin}`}
-            href="https://in.linkedin.com/company/rotaract-club-abv-iiitm"
+            href="https://www.linkedin.com/in/rushabh-shiradkar-41956824a/"
             target="_blank"
             rel="noreferrer"
           >
@@ -46,11 +46,11 @@ const Footer = () => {
             </a>
             <a
               className={`${styles.link}`}
-              href="https://www.iiitm.ac.in/index.php/en/"
+              href="https://wingsfordreams.org/"
               target="_blank"
               rel="noreferrer"
             >
-              ABV-IIITM
+              RACF-WFD
             </a>
           </div>
         </div>
@@ -60,20 +60,11 @@ const Footer = () => {
             <br />
             <a
               className={`${styles.name}`}
-              href="https://in.linkedin.com/in/swatik-paul-1218b3136"
+              href="https://www.linkedin.com/in/rushabh-shiradkar-41956824a/"
               target="_blank"
               rel="noreferrer"
             >
-              Swatik Paul
-            </a>
-            <br />
-            <a
-              className={`${styles.name}`}
-              href="https://www.linkedin.com/in/vivekkamboj1/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Vivek Kamboj
+              Rushabh Shiradkar
             </a>
             <br />
             <br />
@@ -81,17 +72,17 @@ const Footer = () => {
             <br />
             <a
               className={`${styles.name}`}
-              href="https://in.linkedin.com/in/manish-mavi-05"
+              href="https://www.linkedin.com/in/rushabh-shiradkar-41956824a/"
               target="_blank"
               rel="noreferrer"
             >
-              Manish Mavi
+              Rushabh Shiradkar
             </a>
           </p>
           <p>
             For any queries, reach out to us at email
             <br />
-            <b>rotaract@iiitm.ac.in</b>
+            <b>rushabhshiradkar1717@gmail.com</b>
           </p>
         </div>
       </div>
@@ -99,7 +90,7 @@ const Footer = () => {
       <div className={`${styles.footerBottom}`}>
         <hr className={`${styles.line}`} />
         <p style={{ textAlign: "center" }}>
-          Copyright &copy; 2021 ROTARACT CLUB IIITM. All Rights Reserved.
+          Copyright &copy; 2025 RUSHACT CLUB. All Rights Reserved.
         </p>
       </div>
     </footer>

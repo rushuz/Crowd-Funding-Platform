@@ -38,7 +38,6 @@ const NewCampaign = (props) => {
       }
     }
     getData();
-    return null;
   }, [props.history, props.match.params.id]);
 
   if (!isAuthorised()) {

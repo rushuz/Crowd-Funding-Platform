@@ -31,7 +31,6 @@ const LandingPage = (props) => {
       }
     }
     getData();
-    return null;
   }, []);
   const handleClick = (p) => {
     let url = "/campaign/" + p;

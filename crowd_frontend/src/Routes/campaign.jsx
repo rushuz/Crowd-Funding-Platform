@@ -37,7 +37,6 @@ const Campaign = (props) => {
       }
     }
     getData();
-    return null;
   }, [props.history, props.match.params.id]);
 
   const handleEdit = () => {

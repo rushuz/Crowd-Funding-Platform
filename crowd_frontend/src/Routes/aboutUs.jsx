@@ -19,46 +19,24 @@ const AboutUs = () => {
           />
         </div>
         <p className={styles.content}>
-          <br />
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero
-          consequatur ea quia inventore excepturi officiis deserunt sequi, esse
-          nobis laudantium tempora aut, animi praesentium id! Necessitatibus
-          laborum vitae vero at!Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Vero consequatur ea quia inventore excepturi
-          officiis deserunt sequi, esse nobis laudantium tempora aut, animi
-          praesentium id! Necessitatibus laborum vitae vero at!
-          <br />
-          <br />
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero
-          consequatur ea quia inventore excepturi officiis deserunt sequi, esse
-          nobis laudantium tempora aut, animi praesentium id! Necessitatibus
-          laborum vitae vero at!Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Vero consequatur ea quia inventore excepturi
-          officiis deserunt sequi, esse nobis laudantium tempora aut, animi
-          praesentium id! Necessitatibus laborum vitae vero at!
-          <br />
-          <br />
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero
-          consequatur ea quia inventore excepturi officiis deserunt sequi, esse
-          nobis laudantium tempora aut, animi praesentium id! Necessitatibus
-          laborum vitae vero at! Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Vero consequatur ea quia inventore excepturi
-          officiis deserunt sequi, esse nobis laudantium tempora aut, animi
-          praesentium id! Necessitatibus laborum vitae vero at!
-          <br />
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero
-          consequatur ea quia inventore excepturi officiis deserunt sequi, esse
-          nobis laudantium tempora aut, animi praesentium id! Necessitatibus
-          laborum vitae vero at! Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Vero consequatur ea quia inventore excepturi
-          officiis deserunt sequi, esse nobis laudantium tempora aut, animi
-          praesentium id! Necessitatibus laborum vitae vero at!Lorem ipsum
-          dolor, sit amet consectetur adipisicing elit. Vero consequatur ea quia
-          inventore excepturi officiis deserunt sequi, esse nobis laudantium
-          tempora aut, animi praesentium id! Necessitatibus laborum vitae vero
-          at!
-          <br />
+          RUSHACT stands for <strong>Rushabh’s Unified Social Hub for Action & Crowdfunding</strong> — a platform built with a simple belief: real change begins when people come together to act.
         </p>
+        <h2>Our Vision</h2>
+        <p>Our vision is to create a trusted digital ecosystem where generosity meets accountability.</p>
+
+        <h2>What Makes RUSHACT Different</h2>
+        <ul>
+          <li>Purpose-driven campaigns</li>
+          <li>Secure and transparent fundraising</li>
+          <li>Community-first approach</li>
+          <li>User-friendly experience</li>
+        </ul>
+
+        <h2>Our Mission</h2>
+        <p>Our mission is to simplify crowdfunding while promoting social responsibility and meaningful impact.</p>
+
+        <h2>Join the Movement</h2>
+        <p>With RUSHACT, you don’t just donate — you take action.</p>
       </div>
     </React.Fragment>
   );
