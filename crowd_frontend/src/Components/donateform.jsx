@@ -1,33 +1,35 @@
 import React from "react";
-import config from "../config.js";
+import { donateTo } from "../config.js";
 import styles from "./styles/donateform.module.css";
 
 const DonateForm = (props) => {
-  const send_to = config.donateTo(props.id);
+  const send_to = donateTo(props.id);
 
   return (
-    <React.Fragment>
+    <>
       <form className="row" method="POST" action={send_to}>
         <div className="form-group col-7">
           <span className={styles.rupeeInput}>
-            <i className="fa fa-inr" aria-hidden="true"></i>{" "}
+            <i className="fa fa-inr" aria-hidden="true"></i>
             <input
+              type="number"
               className={styles.input}
               name="amount"
               placeholder="Enter Amount"
               disabled={!props.isActivated}
-              required={true}
+              required
               value={props.amount}
               onChange={props.onAmountChange}
             />
           </span>
         </div>
+
         <div className={`col-5 ${styles.submit}`}>
           <button
             type="submit"
             disabled={!props.isActivated}
-            className={`btn  col-12 ${styles.btn} ${
-              props.isActivated === false
+            className={`btn col-12 ${styles.btn} ${
+              !props.isActivated
                 ? `btn-secondary ${styles.disabled}`
                 : `btn-success ${styles.active}`
             }`}
@@ -36,7 +38,7 @@ const DonateForm = (props) => {
           </button>
         </div>
       </form>
-    </React.Fragment>
+    </>
   );
 };
 

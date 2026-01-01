@@ -5,43 +5,40 @@ import NavBar from "../Components/navbar_notLanding";
 import ScrollToTop from "../Components/scrollToTop";
 import { login, isAuthorised } from "../services/auth";
 
-const LoginAdmin = (p) => {
+const LoginAdmin = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   if (isAuthorised()) {
-    p.history.replace("/admin/dashboard");
-    toast.success("Alredy Logged In....");
+    toast.success("Already logged in");
+    props.history.replace("/admin/dashboard");
     return null;
   }
 
-  const handleSubmit = async (p) => {
-    p.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const error = await login(email, password);
-    if (error === undefined) {
-      window.location = "/admin/dashboard";
+
+    if (!error) {
+      props.history.replace("/admin/dashboard");
     } else {
-      if (error.response && error.response.data) {
-        toast.error(error.response.data.message);
-      } else toast.error("Something went wrong");
+      toast.error(
+        error?.response?.data?.message || "Something went wrong"
+      );
     }
   };
-  const handleEmailChange = (p) => {
-    setEmail(p.target.value);
-  };
-  const handlePasswordChange = (p) => {
-    setPassword(p.target.value);
-  };
+
   return (
-    <React.Fragment>
+    <>
       <NavBar />
       <ScrollToTop />
       <Form
         title="Login Admin"
         handleSubmit={handleSubmit}
-        handleEmailChange={handleEmailChange}
-        handlePasswordChange={handlePasswordChange}
+        handleEmailChange={(e) => setEmail(e.target.value)}
+        handlePasswordChange={(e) => setPassword(e.target.value)}
       />
-    </React.Fragment>
+    </>
   );
 };
 

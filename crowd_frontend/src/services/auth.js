@@ -1,34 +1,37 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import config from "../config.js";
+import {
+  registerAdminUrl,
+  loginAdminUrl,
+} from "../config.js";
 import { toast } from "react-toastify";
 
-axios.defaults.headers.common["authorization"] =
-  "Bearer " + localStorage.getItem("token");
+/* attach token dynamically */
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
 export const register = async (email, password) => {
+  let err;
   try {
-    await axios.post(config.registerAdminUrl(), {
-      email: email,
-      password: password,
-    });
+    await axios.post(registerAdminUrl(), { email, password });
     toast.success("Registered");
   } catch (e) {
-    if (e.response && e.response.data) toast.error(e.response.data.message);
-    else toast.error("Something went wrong.");
+    err = e;
+    toast.error(e?.response?.data?.message || "Something went wrong.");
   }
+  return err;
 };
 
 export const login = async (email, password) => {
-  let err = undefined;
+  let err;
   try {
-    const x = await axios.post(config.loginAdminUrl(), {
-      email: email,
-      password: password,
-    });
-
-    localStorage.setItem("token", x.data.jwt);
-    console.log("LoggedIn");
+    const res = await axios.post(loginAdminUrl(), { email, password });
+    localStorage.setItem("token", res.data.jwt);
   } catch (e) {
     err = e;
   }
@@ -40,8 +43,10 @@ export const logout = async () => {
 };
 
 export const isAuthorised = () => {
-  if (!localStorage.getItem("token")) return false;
-  let exp = jwtDecode(localStorage.getItem("token")).exp;
+  const token = localStorage.getItem("token");
+  if (!token) return false;
+
+  const { exp } = jwtDecode(token);
   if (!exp || exp * 1000 < Date.now()) {
     localStorage.removeItem("token");
     return false;

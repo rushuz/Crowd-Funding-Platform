@@ -50,7 +50,7 @@ const AboutUs = () => {
                 <br /> <br />
                 For any queries, reach us out at email : rotaract@iiitm.ac.in
                 <br />
-                +91-9876543210
+                +91-9075030555S
               </p>
             </div>
           </div>

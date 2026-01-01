@@ -83,7 +83,7 @@ const Form = (props) => {
             />
           </div>
 
-          {/* <div className="form-group form-check">
+          <div className="form-group form-check">
             <input
               type="checkbox"
               className="form-check-input"
@@ -94,7 +94,7 @@ const Form = (props) => {
             <label className="form-check-label" htmlFor="Hide">
               Hide
             </label>
-          </div> */}
+          </div>
 
           <div className="form-group form-check">
             <input
